@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "containercraft"
+version = "0.1.0"
+description = "Container workstation over docker and podman (fuses docker-mcp, podman-mcp, kubernetes-mcp verbs)"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastmcp>=3.0.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+containercraft-cli = "containercraft.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/containercraft"]
